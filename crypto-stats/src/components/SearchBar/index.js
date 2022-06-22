@@ -4,14 +4,22 @@ import newsApi from '../../apis/newsApi';
 
 class SearchBar extends React.Component {
   state = { term: '', articles: [] };
+  componentDidMount() {
+    this.searchNews('BTC');
+  }
 
   onSearchChange = async (term) => {
     this.setState({ term: term });
+    await this.searchNews(term);
+  };
+
+  searchNews = async (term) => {
     const { data } = await newsApi.get('/everything', {
       params: { q: term },
     });
     this.setState({ articles: data.articles });
     this.props.setNews(this.state.articles);
+    return data;
   };
 
   render() {

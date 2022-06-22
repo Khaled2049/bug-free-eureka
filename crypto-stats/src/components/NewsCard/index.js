@@ -11,12 +11,18 @@ class NewsCard extends React.Component {
   renderNews = () => {
     return (
       <div>
-        {this.state.news.map((d) => {
+        {this.state.news.slice(0, 5).map((d) => {
           return (
-            <Card key={d.publishedAt}>
-              <Card.Img variant="top" src={d.urlToImage} />
+            <Card
+              className="my-3 mx-auto"
+              style={{ width: '50rem' }}
+              key={d.publishedAt}
+            >
+              {/* <Card.Img variant="top" src={d.urlToImage} /> */}
               <Card.Body>
-                <Card.Title>{d.title}</Card.Title>
+                <Card.Title>
+                  <h1>{d.title}</h1>
+                </Card.Title>
                 <Card.Text>{d.description}</Card.Text>
                 <Button href={d.url} variant="primary">
                   Read More

@@ -1,13 +1,9 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import heroBg from '../../assets/hero-bg.png';
 
 const Hero = () => {
   return (
-    <div
-      style={{ backgroundImage: `url(${heroBg})` }}
-      className="px-4 text-center border-bottom"
-    >
+    <div className="px-4 text-center">
       <div className="overflow-hidden">
         <div className="container">
           <img width="300px" src={require('../../assets/redLogo.png')}></img>

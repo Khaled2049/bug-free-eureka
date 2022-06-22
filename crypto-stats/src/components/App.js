@@ -5,19 +5,21 @@ import Hero from './Hero';
 import NewsCard from './NewsCard';
 import Alerts from './Alerts';
 
+import Footer from './Footer';
 function App() {
   return (
-    <React.Fragment>
+    <React.Fragment className="container">
       <Header />
-      <Hero />
       <div className="row">
         <div className="col">
-          <NewsCard />
+          <Hero />
         </div>
         <div className="col">
           <Alerts />
         </div>
+        <NewsCard />
       </div>
+      <Footer />
     </React.Fragment>
   );
 }
