@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { newsReducer } from './newsReducer';
+import authReducer from './authReducer';
 
 const songsReducer = () => {
   return [
@@ -22,4 +23,5 @@ export default combineReducers({
   songs: songsReducer,
   selectedSong: selectedSongReducer,
   news: newsReducer,
+  auth: authReducer,
 });
