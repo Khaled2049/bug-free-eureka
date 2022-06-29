@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Book",
+        "price": 10.99,
+        "imgUrl": ""
+    },
+    {
+        "id": 2,
+        "name": "Shitt",
+        "price": 10.99,
+        "imgUrl": ""
+    },
+    {
+        "id": 3,
+        "name": "art",
+        "price": 10.99,
+        "imgUrl": ""
+    },
+    {
+        "id": 4,
+        "name": "drugs",
+        "price": 10.99,
+        "imgUrl": ""
+    }
+]
