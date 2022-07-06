@@ -1,5 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { createProject } from '../../actions';
 
 class ProjectCreate extends React.Component {
   renderInput = ({ input, label, meta }) => {
@@ -24,9 +26,9 @@ class ProjectCreate extends React.Component {
       );
     }
   };
-  onSubmit(formValues) {
-    console.log(formValues);
-  }
+  onSubmit = (formValues) => {
+    this.props.createProject(formValues);
+  };
 
   render() {
     return (
@@ -57,7 +59,9 @@ const validate = (formValues) => {
   return errors;
 };
 
-export default reduxForm({
+const formWrapped = reduxForm({
   form: 'projectCreate',
   validate,
 })(ProjectCreate);
+
+export default connect(null, { createProject })(formWrapped);

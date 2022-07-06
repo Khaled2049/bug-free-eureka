@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { newsReducer } from './newsReducer';
 import authReducer from './authReducer';
+import projectReducer from './projectReducer';
 
 const songsReducer = () => {
   return [
@@ -26,4 +27,5 @@ export default combineReducers({
   news: newsReducer,
   auth: authReducer,
   form: formReducer,
+  projects: projectReducer,
 });
