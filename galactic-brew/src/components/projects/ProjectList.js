@@ -1,12 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchProjects } from '../../actions';
+import { fetchProjects, deleteProject } from '../../actions';
 
 class ProjectList extends React.Component {
   componentDidMount() {
     this.props.fetchProjects();
   }
+
+  onDeleteProject = (id) => {
+    this.props.deleteProject(id);
+  };
 
   renderAdmin = (project) => {
     if (project.userId === this.props.currentUserId) {
@@ -18,12 +22,18 @@ class ProjectList extends React.Component {
           >
             EDIT
           </Link>
-          <Link
+          {/* <Link
             to={`projects/delete/${project.id}`}
             className="ui button negative"
           >
             DELETE
-          </Link>
+          </Link> */}
+          <button
+            onClick={() => this.onDeleteProject(project.id)}
+            className="ui button negative"
+          >
+            DELETE
+          </button>
         </div>
       );
     }
@@ -75,4 +85,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchProjects })(ProjectList);
+export default connect(mapStateToProps, { fetchProjects, deleteProject })(
+  ProjectList
+);
