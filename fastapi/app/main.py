@@ -30,12 +30,6 @@ while True:
     
 app = FastAPI()
 
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
 @app.get("/students")
 async def get_students():
     cur.execute("""SELECT * FROM student""")
