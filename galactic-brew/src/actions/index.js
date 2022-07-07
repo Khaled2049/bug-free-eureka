@@ -19,7 +19,6 @@ export const fetchNews = () => async (dispatch) => {
 };
 
 export const signIn = (userId) => {
-  console.log('uid', userId);
   return {
     type: 'SIGN_IN',
     payload: userId,
@@ -52,11 +51,13 @@ export const fetchProject = (id) => async (dispatch) => {
 };
 
 export const editProject = (id, formValues) => async (dispatch) => {
-  const res = await projectsApi.put(`/projects/${id}`, formValues);
+  const res = await projectsApi.patch(`/projects/${id}`, formValues);
   dispatch({ type: 'EDIT_PROJECT', payload: res.data });
+  history.push('/projects');
 };
 
 export const deleteProject = (id) => async (dispatch) => {
   await projectsApi.delete(`/projects/${id}`);
   dispatch({ type: 'DELETE_PROJECT', payload: id });
+  history.push('/projects');
 };

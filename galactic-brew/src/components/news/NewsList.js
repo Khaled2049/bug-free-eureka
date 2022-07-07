@@ -8,7 +8,6 @@ class NewsList extends React.Component {
   }
 
   renderNews() {
-    console.log(this.props.news);
     return this.props.news.articles.map((post) => {
       return (
         <div className="item" key={post.publishedAt}>

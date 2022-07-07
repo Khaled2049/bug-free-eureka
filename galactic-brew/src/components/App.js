@@ -9,7 +9,7 @@ import {
   ProjectList,
   ProjectShow,
 } from './projects';
-import { Route, Router, Link } from 'react-router-dom';
+import { Route, Router } from 'react-router-dom';
 import Header from './Header';
 import history from '../history';
 

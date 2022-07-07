@@ -12,8 +12,18 @@ class ProjectList extends React.Component {
     if (project.userId === this.props.currentUserId) {
       return (
         <div className="right floated content">
-          <button className="ui button primary">EDIT</button>
-          <button className="ui button negative">DELETE</button>
+          <Link
+            to={`/projects/edit/${project.id}`}
+            className="ui button primary"
+          >
+            EDIT
+          </Link>
+          <Link
+            to={`projects/delete/${project.id}`}
+            className="ui button negative"
+          >
+            DELETE
+          </Link>
         </div>
       );
     }
