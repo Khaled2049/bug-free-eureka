@@ -1,25 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Book",
-        "price": 10.99,
-        "imgUrl": "https://drive.google.com/drive/folders/1xf9tEvrOrlb175dg3SIMb-9wFy6MfAk3"
-    },
-    {
-        "id": 2,
-        "name": "Shitt",
-        "price": 10.99,
-        "imgUrl": ""
-    },
-    {
-        "id": 3,
-        "name": "art",
-        "price": 10.99,
-        "imgUrl": ""
-    },
-    {
-        "id": 4,
-        "name": "drugs",
+        "name": "test",
         "price": 10.99,
         "imgUrl": ""
     }

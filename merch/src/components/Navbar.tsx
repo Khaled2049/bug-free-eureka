@@ -17,6 +17,12 @@ const Navbar = () => {
           <Nav.Link to="/About" as={NavLink}>
             About
           </Nav.Link>
+          <Nav.Link to="/pics" as={NavLink}>
+            Pics
+          </Nav.Link>
+          <Nav.Link to="/news" as={NavLink}>
+            News
+          </Nav.Link>
         </Nav>
         {cartQuantity > 0 && (
           <Button
