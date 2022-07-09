@@ -1,10 +1,12 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import storeItems from '../data/items.json';
 import StoreItem from '../components/StoreItem';
+import { useShoppingCart } from '../context/ShoppingCartContext';
 const Store = () => {
+  const { storeItems } = useShoppingCart();
+
   const renderStoreItems = () => {
-    return storeItems.map((item) => {
+    return storeItems.map((item: any) => {
       return (
         <Col key={item.id}>
           <StoreItem {...item} />

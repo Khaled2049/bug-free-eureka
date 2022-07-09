@@ -2,14 +2,13 @@ import React from 'react';
 import { Offcanvas, Stack } from 'react-bootstrap';
 import { useShoppingCart } from '../context/ShoppingCartContext';
 import CartItem from '../components/CartItem';
-import storeItems from '../data/items.json';
 import { formatCurrency } from '../utils/formatCurrency';
 type ShoppingCartProps = {
   isOpen: boolean;
 };
 
 const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
-  const { closeCart, cartItems } = useShoppingCart();
+  const { closeCart, cartItems, storeItems } = useShoppingCart();
   return (
     <Offcanvas show={isOpen} onHide={closeCart} placement="end">
       <Offcanvas.Header closeButton>
@@ -24,7 +23,7 @@ const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
             Total{' '}
             {formatCurrency(
               cartItems.reduce((total, cartItem) => {
-                const item = storeItems.find((i) => i.id === cartItem.id);
+                const item = storeItems.find((i: any) => i.id === cartItem.id);
                 return total + (item?.price || 0) * cartItem.quantity;
               }, 0)
             )}

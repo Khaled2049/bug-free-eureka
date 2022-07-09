@@ -1,4 +1,11 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import unsplash from '../api/unsplash';
 import ShoppingCart from '../components/ShoppingCart';
 type ShoppingCartProvideProps = {
   children: ReactNode;
@@ -18,6 +25,7 @@ type ShoppingCartContext = {
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
+  storeItems: any;
 };
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -29,9 +37,30 @@ export function useShoppingCart() {
 export function ShoppingCartProvider({ children }: ShoppingCartProvideProps) {
   const [cartItems, setcartItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-
+  const [storeItems, setstoreItems] = useState([]);
   const openCart = () => {
     setIsOpen(true);
+  };
+
+  useEffect(() => {
+    getStoreItems();
+  }, []);
+
+  const getStoreItems = async () => {
+    const response = await unsplash.get('/photos/random', {
+      params: { count: 30 },
+    });
+
+    const results = response.data;
+    const storeItems = results.map((img: any) => {
+      return {
+        id: img.id,
+        name: img.user.username,
+        imgUrl: img.urls.regular,
+        price: img.downloads,
+      };
+    });
+    setstoreItems(storeItems);
   };
 
   const closeCart = () => {
@@ -96,6 +125,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvideProps) {
         cartQuantity,
         openCart,
         closeCart,
+        storeItems,
       }}
     >
       {children}
