@@ -58,7 +58,9 @@ class ProjectList extends React.Component {
           {this.renderAdmin(project)}
           <i className="large middle aligned icon camera" />
           <div className="content">
-            {project.title}
+            <Link to={`/projects/${project.id}`} className="header">
+              {project.title}{' '}
+            </Link>
             <div className="description">{project.description}</div>
           </div>
         </div>
