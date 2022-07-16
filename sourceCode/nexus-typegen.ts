@@ -28,6 +28,10 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  AuthPayload: { // root type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
+  }
   Link: { // root type
     description: string; // String!
     id: number; // Int!
@@ -39,6 +43,10 @@ export interface NexusGenObjects {
     email: string; // String!
     id: number; // Int!
     name: string; // String!
+  }
+  Vote: { // root type
+    link: NexusGenRootTypes['Link']; // Link!
+    user: NexusGenRootTypes['User']; // User!
   }
   Wish: { // root type
     giftLink: string; // String!
@@ -57,15 +65,23 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  AuthPayload: { // field return type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
+  }
   Link: { // field return type
     description: string; // String!
     id: number; // Int!
     postedBy: NexusGenRootTypes['User'] | null; // User
     url: string; // String!
+    voters: NexusGenRootTypes['User'][]; // [User!]!
   }
   Mutation: { // field return type
     createWish: NexusGenRootTypes['Wish']; // Wish!
+    login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     post: NexusGenRootTypes['Link']; // Link!
+    signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
+    vote: NexusGenRootTypes['Vote'] | null; // Vote
   }
   Query: { // field return type
     feed: NexusGenRootTypes['Link'][]; // [Link!]!
@@ -76,6 +92,11 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     links: NexusGenRootTypes['Link'][]; // [Link!]!
     name: string; // String!
+    votes: NexusGenRootTypes['Link'][]; // [Link!]!
+  }
+  Vote: { // field return type
+    link: NexusGenRootTypes['Link']; // Link!
+    user: NexusGenRootTypes['User']; // User!
   }
   Wish: { // field return type
     giftLink: string; // String!
@@ -84,15 +105,23 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  AuthPayload: { // field return type name
+    token: 'String'
+    user: 'User'
+  }
   Link: { // field return type name
     description: 'String'
     id: 'Int'
     postedBy: 'User'
     url: 'String'
+    voters: 'User'
   }
   Mutation: { // field return type name
     createWish: 'Wish'
+    login: 'AuthPayload'
     post: 'Link'
+    signup: 'AuthPayload'
+    vote: 'Vote'
   }
   Query: { // field return type name
     feed: 'Link'
@@ -103,6 +132,11 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
     links: 'Link'
     name: 'String'
+    votes: 'Link'
+  }
+  Vote: { // field return type name
+    link: 'Link'
+    user: 'User'
   }
   Wish: { // field return type name
     giftLink: 'String'
@@ -115,9 +149,21 @@ export interface NexusGenArgTypes {
     createWish: { // args
       giftLink: string; // String!
     }
+    login: { // args
+      email: string; // String!
+      password: string; // String!
+    }
     post: { // args
       description: string; // String!
       url: string; // String!
+    }
+    signup: { // args
+      email: string; // String!
+      name: string; // String!
+      password: string; // String!
+    }
+    vote: { // args
+      linkId: number; // Int!
     }
   }
 }
