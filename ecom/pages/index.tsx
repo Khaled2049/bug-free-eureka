@@ -11,8 +11,7 @@ interface IHomeProps {
 }
 
 const Home = ({ products, bannerData }: IHomeProps) => {
-  // console.log('Products', products);
-  console.log('BannerData', bannerData);
+  console.log(bannerData);
   return (
     <>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]}></HeroBanner>
@@ -20,17 +19,18 @@ const Home = ({ products, bannerData }: IHomeProps) => {
         <h2>Best selling Products</h2>
         <p>Buy art from local artists</p>
       </div>
-
       <div className="products-container">
-        {products.map((product) => product)}
+        {products?.map((product) => {
+          return <Product key={product._id} product={product} />;
+        })}
       </div>
-      <FooterBanner></FooterBanner>
+      <FooterBanner footerBanner={bannerData && bannerData[0]}></FooterBanner>
     </>
   );
 };
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "products"]';
+  const query = '*[_type == "product"]';
   const products = await client.fetch(query);
   const bannerQuery = '*[_type == "banner"]';
   const bannerData = await client.fetch(bannerQuery);
