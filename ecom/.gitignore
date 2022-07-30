@@ -4,7 +4,9 @@
 node_modules
 /.pnp
 .pnp.js
-
+sanity.json
+.env
+env
 # testing
 /coverage
 
