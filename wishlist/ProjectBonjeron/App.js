@@ -1,20 +1,59 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  Text,
+  View,
+  ImageBackground,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  Button,
+} from 'react-native';
+import AppStyles from './styles/AppStyles';
+import React, { useState } from 'react';
+import InlineTextButton from './components/InlineTextButton';
 
 export default function App() {
+  const bg = require('./assets/background.jpg');
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ImageBackground source={bg} style={AppStyles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : null}
+        style={AppStyles.backgroundCover}
+      >
+        <Text style={[AppStyles.lightText, AppStyles.header]}>Login</Text>
+        <TextInput
+          style={[
+            AppStyles.textInput,
+            AppStyles.lightTextInput,
+            AppStyles.lightText,
+          ]}
+          value={userName}
+          onChangeText={setUserName}
+          placeholder="Username"
+          placeholderTextColor="#bCbCbC"
+        ></TextInput>
+        <TextInput
+          style={[
+            AppStyles.textInput,
+            AppStyles.lightTextInput,
+            AppStyles.lightText,
+          ]}
+          placeholder="Password"
+          secureTextEntry="true"
+          placeholderTextColor="#bCbCbC"
+          value={password}
+          onChangeText={setPassword}
+        ></TextInput>
+        <View style={AppStyles.rowContainer}>
+          <Text style={AppStyles.lightText}>
+            Dont't have an account? <InlineTextButton text="Sign Up!" />
+          </Text>
+        </View>
+        <Button title="Login" color={'#7A9CC5'} />
+      </KeyboardAvoidingView>
+    </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
