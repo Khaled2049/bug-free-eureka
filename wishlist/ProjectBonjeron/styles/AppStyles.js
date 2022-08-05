@@ -44,4 +44,7 @@ export default StyleSheet.create({
     color: '#b2dbd8',
     opacity: 0.6,
   },
+  errorText: {
+    color: '#ff0000',
+  },
 });

@@ -4,9 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-import Login from './screens/Login';
 import SignUp from './screens/SignUp';
-
+import Login from './screens/Login';
+import WishList from './screens/WishList';
 export default function App() {
   return (
     <NavigationContainer>
@@ -20,6 +20,11 @@ export default function App() {
           options={{ headerShown: false }}
           name="SignUp"
           component={SignUp}
+        ></Stack.Screen>
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="WishList"
+          component={WishList}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

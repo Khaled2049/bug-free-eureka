@@ -11,11 +11,37 @@ import {
 import AppStyles from '../styles/AppStyles';
 import React, { useState } from 'react';
 import InlineTextButton from '../components/InlineTextButton';
+import { auth } from '../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Login({ navigation }) {
   const bg = require('../assets/background.jpg');
-  const [userName, setUserName] = useState('');
+
+  // if (currentUser) {
+  //   navigation.navigate('WishList');
+  // }
+
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [validationMessage, setValidationMessage] = useState('');
+
+  const login = () => {
+    if (email !== '' && password !== '') {
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          navigation.navigate('WishList', { user });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setValidationMessage(errorMessage);
+        });
+    } else {
+      setValidationMessage('Enter an email and a password');
+    }
+  };
 
   return (
     <ImageBackground source={bg} style={AppStyles.container}>
@@ -24,15 +50,16 @@ export default function Login({ navigation }) {
         style={AppStyles.backgroundCover}
       >
         <Text style={[AppStyles.lightText, AppStyles.header]}>Login</Text>
+        <Text style={AppStyles.errorText}>{validationMessage}</Text>
         <TextInput
           style={[
             AppStyles.textInput,
             AppStyles.lightTextInput,
             AppStyles.lightText,
           ]}
-          value={userName}
-          onChangeText={setUserName}
-          placeholder="Username"
+          value={email}
+          onChangeText={setEmail}
+          placeholder="Email"
           placeholderTextColor="#bCbCbC"
         ></TextInput>
         <TextInput
@@ -56,7 +83,7 @@ export default function Login({ navigation }) {
             />
           </Text>
         </View>
-        <Button title="Login" color={'#7A9CC5'} />
+        <Button title="Login" onPress={login} color={'#7A9CC5'} />
       </KeyboardAvoidingView>
     </ImageBackground>
   );
