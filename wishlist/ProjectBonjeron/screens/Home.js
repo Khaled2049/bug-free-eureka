@@ -7,10 +7,14 @@ import InlineTextButton from '../components/InlineTextButton';
 export default function WishList({ navigation }) {
   return (
     <View style={AppStyles.container}>
-      <Text>Home</Text>
       <InlineTextButton
         onPress={() => navigation.navigate('WishList')}
         text="WishList"
+      />
+      <Text>_________________</Text>
+      <InlineTextButton
+        onPress={() => navigation.navigate('Login')}
+        text="Login"
       />
     </View>
   );

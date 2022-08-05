@@ -12,13 +12,17 @@ import AppStyles from '../styles/AppStyles';
 import React, { useState } from 'react';
 import InlineTextButton from '../components/InlineTextButton';
 import { auth } from '../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
 export default function Login({ navigation }) {
   const bg = require('../assets/background.jpg');
 
-  // if (currentUser) {
+  // if (auth.currentUser) {
   //   navigation.navigate('WishList');
+  // } else {
+  //   onAuthStateChanged(auth, (user) => {
+  //     navigation.navigate('WishList');
+  //   });
   // }
 
   const [email, setEmail] = useState('');
