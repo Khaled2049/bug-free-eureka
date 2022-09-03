@@ -1,7 +1,7 @@
 import newsApi from "../apis/newsApi";
 import projectsApi from "../apis/projectsApi";
 import history from "../history";
-
+import _ from "lodash";
 export const selectSong = (song) => {
   // Return an action
   return {
@@ -63,26 +63,21 @@ export const deleteProject = (id) => async (dispatch) => {
 };
 
 // Actions for search
-export const cleanQuery = () => {
-  return {
-    type: "CLEAN_QUERY",
-  };
+export const cleanQuery = (dispatch) => {
+  dispatch({ type: "CLEAN_QUERY" });
 };
 
-export const startSearch = () => {
-  return {
-    type: "START_SEARCH",
-  };
+export const startSearch = async (dispatch) => {
+  dispatch({ type: "START_SEARCH" });
 };
 
-export const finishSearch = () => {
-  return {
+export const finishSearch = (dispatch) => {
+  dispatch({
     type: "FINISH_SEARCH",
-  };
+    // results: _.filter(projects, isMatch),
+  });
 };
 
-export const updateSelection = () => {
-  return {
-    type: "UPDATE_SELECTION",
-  };
+export const updateSelection = (dispatch) => {
+  dispatch({ type: "UPDATE_SELECTION" });
 };

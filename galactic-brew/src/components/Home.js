@@ -37,7 +37,7 @@ const Home = () => {
             </p>
           </div>
           <Link to="/projects">
-            <div className="ui animated button home_button" tabindex="0">
+            <div className="ui animated button home_button">
               <div className="visible content">View Projects</div>
               <div className="hidden content">
                 <i className="right arrow icon"></i>

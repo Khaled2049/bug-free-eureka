@@ -1,22 +1,36 @@
 import _ from "lodash";
 import React from "react";
 import { Search, Grid, Header, Segment } from "semantic-ui-react";
-// import {
-//   cleanQuery,
-//   startSearch,
-//   finishSearch,
-//   updateSelection,
-// } from "../../actions";
+import { connect } from "react-redux";
 
-import searchReducer from "../../reducers/searchReducer";
+const source = _.times(1, () => ({
+  title: "test",
+}));
+
 const initialState = {
   loading: false,
   results: [],
   value: "",
 };
 
+function exampleReducer(state, action) {
+  switch (action.type) {
+    case "CLEAN_QUERY":
+      return initialState;
+    case "START_SEARCH":
+      return { ...state, loading: true, value: action.query };
+    case "FINISH_SEARCH":
+      return { ...state, loading: false, results: action.results };
+    case "UPDATE_SELECTION":
+      return { ...state, value: action.selection };
+
+    default:
+      throw new Error();
+  }
+}
+
 function SearchBar({ projects }) {
-  const [state, dispatch] = React.useReducer(searchReducer, initialState);
+  const [state, dispatch] = React.useReducer(exampleReducer, initialState);
   const { loading, results, value } = state;
 
   const timeoutRef = React.useRef();
@@ -35,7 +49,7 @@ function SearchBar({ projects }) {
 
       dispatch({
         type: "FINISH_SEARCH",
-        results: _.filter(projects, isMatch),
+        results: _.filter(source, isMatch),
       });
     }, 300);
   }, []);
@@ -68,7 +82,7 @@ function SearchBar({ projects }) {
           </pre>
           <Header>Options</Header>
           <pre style={{ overflowX: "auto" }}>
-            {JSON.stringify(projects, null, 2)}
+            {JSON.stringify(source, null, 2)}
           </pre>
         </Segment>
       </Grid.Column>
