@@ -12,6 +12,16 @@ class ProjectForm extends React.Component {
       </div>
     );
   };
+  renderDescription = ({ input, label, meta }) => {
+    const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
+    return (
+      <div className={className}>
+        <label>{label}</label>
+        <textarea rows="8" {...input} autoComplete="off"></textarea>
+        {this.renderError(meta)}
+      </div>
+    );
+  };
 
   renderError = ({ touched, error }) => {
     if (touched && error) {
@@ -35,7 +45,7 @@ class ProjectForm extends React.Component {
         <Field name="title" component={this.renderInput} label="Enter Title" />
         <Field
           name="description"
-          component={this.renderInput}
+          component={this.renderDescription}
           label="Enter Description"
         />
         <button className="ui button primary">Submit</button>
