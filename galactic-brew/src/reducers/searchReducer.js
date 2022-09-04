@@ -13,7 +13,8 @@ export default (state = initialState, action) => {
       return { ...state, loading: false, results: action.results };
     case "UPDATE_SELECTION":
       return { ...state, value: action.selection };
-
+    case "LOAD_PROJECTS":
+      return { ...state, allProjects: action.data };
     default:
       return state;
   }

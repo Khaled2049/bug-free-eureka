@@ -73,7 +73,7 @@ class ProjectList extends React.Component {
     return (
       <div>
         <h2>Projects</h2>
-        <SearchBar projects={this.props.projects} />
+        <SearchBar />
         <div className="ui celled list">{this.renderProjects()}</div>
         {this.renderCreate()}
       </div>
