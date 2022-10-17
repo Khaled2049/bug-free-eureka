@@ -1,32 +1,10 @@
 {
   "projects": [
     {
-      "title": "Project - 1",
-      "description": "Test54",
+      "title": "Web 3.0 Project - Looking for developers",
+      "description": "I have an idea for a crypto project. $25/ hr, contact for more information!",
+      "userId": "102384065028323342801",
       "id": 1
-    },
-    {
-      "title": "it works ",
-      "description": "very nice",
-      "id": 2
-    },
-    {
-      "title": "asdf",
-      "description": "`asd",
-      "userId": "109266570655752725266",
-      "id": 3
-    },
-    {
-      "title": "test",
-      "description": "test",
-      "userId": "109266570655752725266",
-      "id": 4
-    },
-    {
-      "title": "test",
-      "description": "test",
-      "userId": "109266570655752725266",
-      "id": 5
     }
   ]
 }

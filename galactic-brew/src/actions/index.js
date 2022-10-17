@@ -18,6 +18,13 @@ export const fetchNews = () => async (dispatch) => {
   dispatch({ type: 'FETCH_NEWS', payload: res.data });
 };
 
+export const getNews = (term) => async (dispatch) => {
+  const res = await newsApi.get('/everything', {
+    params: { q: term },
+  });
+  dispatch({ type: 'FETCH_NEWS', payload: res.data });
+};
+
 export const signIn = (userId) => {
   return {
     type: 'SIGN_IN',
