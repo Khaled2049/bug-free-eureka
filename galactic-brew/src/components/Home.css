@@ -1,0 +1,65 @@
+.home_page {
+    width: 100%;    
+    display: flex;
+    justify-content: center;    
+    align-items: center;    
+    height: 50vh;
+    flex-direction: column;
+}
+
+.home_content{
+    
+    border: solid 2px black;    
+    padding: 2rem;    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;    
+}
+
+.home_title {
+    font-size: 3rem;
+    border-bottom: 5px solid red;
+}
+
+.home_description {
+    font-size: 1.5rem;
+    width: 45vw;
+    margin-top: 1rem;
+    min-width: 50vh;
+}
+
+.home_button {
+    width: 20vw;
+    margin: 2rem;
+}
+    
+.home_wave {
+    z-index: -1;
+    width: 100vw;
+    height: 40vh;
+    position: absolute;
+    bottom: 0;    
+    
+    border-radius: 5px;
+    background-image: linear-gradient(to top, #f12a2a 0%, #d6770b 100%);
+    overflow: hidden;
+  }
+  
+  .wave {
+    width: 100vw;
+    height: 900px;
+    position: absolute;
+    top: -25%;
+    left: 30%;    
+    margin-left: -700px;
+    margin-top: -900px;
+    border-radius: 50%;
+    background: white;
+    animation: wave 15s infinite linear;
+  }
+  
+  @keyframes wave {
+    from { transform: rotate(0deg);}
+    from { transform: rotate(250deg);}
+    from { transform: rotate(360deg);}
+  }

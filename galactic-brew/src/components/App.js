@@ -1,17 +1,18 @@
-import React from 'react';
-import Songs from './songs';
-import NewsList from './news/NewsList';
-import Home from './Home';
+import React from "react";
+import Songs from "./songs";
+import NewsList from "./news/NewsList";
+import Home from "./Home";
+import "semantic-ui-css/semantic.min.css";
 import {
   ProjectCreate,
   ProjectDelete,
   ProjectEdit,
   ProjectList,
   ProjectShow,
-} from './projects';
-import { Route, Router, Switch } from 'react-router-dom';
-import Header from './Header';
-import history from '../history';
+} from "./projects";
+import { Route, Router, Switch } from "react-router-dom";
+import Header from "./Header";
+import history from "../history";
 
 const App = () => {
   return (
