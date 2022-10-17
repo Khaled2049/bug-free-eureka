@@ -1,11 +1,11 @@
-import React from "react";
-import GoogleAuth from "./GoogleAuth";
-import { Link } from "react-router-dom";
+import React from 'react';
+import GoogleAuth from './GoogleAuth';
+import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <div
       className="ui secondary pointing menu"
-      style={{ marginBottom: "2rem", padding: "1rem" }}
+      style={{ marginBottom: '2rem', padding: '1rem' }}
     >
       <Link to="/" className="item">
         Projects
@@ -13,6 +13,9 @@ const Header = () => {
       <div className="right menu">
         <Link className="item" to="/projects">
           All Projects
+        </Link>
+        <Link to="/news" className="item">
+          News
         </Link>
         <GoogleAuth />
       </div>

@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchProjects, deleteProject } from "../../actions";
-import { SearchBar } from "./";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchProjects, deleteProject } from '../../actions';
+import { SearchBar } from './';
 
 class ProjectList extends React.Component {
   componentDidMount() {
@@ -43,9 +43,9 @@ class ProjectList extends React.Component {
   renderCreate() {
     if (this.props.isSignedIn) {
       return (
-        <div style={{ textAlign: "right" }}>
+        <div style={{ textAlign: 'right' }}>
           <Link className="ui button primary" to="/projects/new">
-            Create PROJECT
+            Create Project
           </Link>
         </div>
       );
@@ -55,12 +55,16 @@ class ProjectList extends React.Component {
   renderProjects() {
     return this.props.projects.map((project) => {
       return (
-        <div className="item" key={project.id}>
+        <div className="item" style={{ padding: '1rem' }} key={project.id}>
           {this.renderAdmin(project)}
           <i className="large middle aligned icon eye" />
           <div className="content">
-            <Link to={`/projects/${project.id}`} className="header">
-              {project.title}{" "}
+            <Link
+              to={`/projects/${project.id}`}
+              style={{ padding: '1px' }}
+              className="header"
+            >
+              {project.title}{' '}
             </Link>
             <div className="description">{project.description}</div>
           </div>
