@@ -1,11 +1,16 @@
 import React from "react";
 import ReviewForm from "./ReviewForm";
+import { ReviewData } from "../types/index";
 
-const NewReview = () => {
+type NewReviewProps = {
+  onSubmit: (data: ReviewData) => void;
+};
+
+const NewReview = ({ onSubmit }: NewReviewProps) => {
   return (
     <div>
       <h1 className="mb-4">New Review</h1>
-      <ReviewForm />
+      <ReviewForm onSubmit={onSubmit} />
     </div>
   );
 };
